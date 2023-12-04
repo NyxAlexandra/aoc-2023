@@ -4,11 +4,11 @@ use regex::Regex;
 fn main() {
     const INPUT: &str = include_str!("../input.txt");
 
-    println!("part1 -> {}", part1(INPUT));
-    println!("part2 -> {}", part2(INPUT));
+    println!("part_1 -> {}", part_1(INPUT));
+    println!("part_2 -> {}", part_2(INPUT));
 }
 
-fn part1(input: &str) -> usize {
+fn part_1(input: &str) -> usize {
     input
         .lines()
         .map(str::chars)
@@ -22,7 +22,7 @@ fn part1(input: &str) -> usize {
         .sum()
 }
 
-fn part2(input: &str) -> usize {
+fn part_2(input: &str) -> usize {
     let regexes = [
         Regex::new(r"1|one"),
         Regex::new(r"2|two"),
@@ -61,18 +61,18 @@ mod tests {
     use super::*;
 
     #[test]
-    fn part1_example() {
+    fn part_1_example() {
         const INPUT: &str = "1abc2\npqr3stu8vwx\na1b2c3d4e5f\ntreb7uchet";
         const OUTPUT: usize = 142;
 
-        assert_eq!(part1(INPUT), OUTPUT);
+        assert_eq!(part_1(INPUT), OUTPUT);
     }
 
     #[test]
-    fn part2_example() {
+    fn part_2_example() {
         const INPUT: &str = "two1nine\neightwothree\nabcone2threexyz\nxtwone3four\n4nineeightseven2\nzoneight234\n7pqrstsixteen";
         const OUTPUT: usize = 281;
 
-        assert_eq!(part2(INPUT), OUTPUT);
+        assert_eq!(part_2(INPUT), OUTPUT);
     }
 }
