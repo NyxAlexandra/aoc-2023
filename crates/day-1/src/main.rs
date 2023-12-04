@@ -24,16 +24,9 @@ fn part_1(input: &str) -> usize {
 
 fn part_2(input: &str) -> usize {
     let regexes = [
-        Regex::new("1|one"),
-        Regex::new("2|two"),
-        Regex::new("3|three"),
-        Regex::new("4|four"),
-        Regex::new("5|five"),
-        Regex::new("6|six"),
-        Regex::new("7|seven"),
-        Regex::new("8|eight"),
-        Regex::new("9|nine"),
+        "1|one", "2|two", "3|three", "4|four", "5|five", "6|six", "7|seven", "8|eight", "9|nine",
     ]
+    .map(Regex::new)
     .map(Result::unwrap);
 
     input
@@ -42,8 +35,7 @@ fn part_2(input: &str) -> usize {
             let matches: Vec<_> = regexes
                 .iter()
                 .enumerate()
-                .map(|(i, re)| re.find_iter(line).map(move |mat| (i + 1, mat)))
-                .flatten()
+                .flat_map(|(i, re)| re.find_iter(line).map(move |mat| (i + 1, mat)))
                 .sorted_by(|(_, a), (_, b)| a.range().cmp(b.range()))
                 .map(|(num, _)| num)
                 .collect();
