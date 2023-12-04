@@ -40,10 +40,10 @@ fn part_2(input: &str) -> usize {
                 .map(|(num, _)| num)
                 .collect();
 
-            let first = matches.first()?;
-            let last = matches.last()?;
-
-            Some(first * 10 + last)
+            matches
+                .first()
+                .zip(matches.last())
+                .map(|(first, last)| first * 10 + last)
         })
         .sum()
 }
