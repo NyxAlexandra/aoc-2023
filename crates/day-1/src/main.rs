@@ -51,7 +51,7 @@ fn part_2(input: &str) -> usize {
             let first = matches.first()?;
             let last = matches.last()?;
 
-            Some((first * 10) + last)
+            Some(first * 10 + last)
         })
         .sum()
 }
