@@ -8,7 +8,7 @@ fn main() {
     println!("part2 -> {}", part2(INPUT));
 }
 
-fn part1(input: &str) -> u32 {
+fn part1(input: &str) -> usize {
     input
         .lines()
         .map(str::chars)
@@ -17,12 +17,12 @@ fn part1(input: &str) -> u32 {
         .flat_map(|(first, last)| {
             let last = last.unwrap_or(first);
 
-            format!("{}{}", first, last).parse::<u32>()
+            format!("{}{}", first, last).parse::<usize>()
         })
         .sum()
 }
 
-fn part2(input: &str) -> u32 {
+fn part2(input: &str) -> usize {
     let regexes = [
         Regex::new(r"1|one"),
         Regex::new(r"2|two"),
@@ -48,8 +48,8 @@ fn part2(input: &str) -> u32 {
                 .map(|(num, _)| num)
                 .collect();
 
-            let first = *matches.first()? as u32;
-            let last = *matches.last()? as u32;
+            let first = *matches.first()?;
+            let last = *matches.last()?;
 
             Some((first * 10) + last)
         })
@@ -63,7 +63,7 @@ mod tests {
     #[test]
     fn part1_example() {
         const INPUT: &str = "1abc2\npqr3stu8vwx\na1b2c3d4e5f\ntreb7uchet";
-        const OUTPUT: u32 = 142;
+        const OUTPUT: usize = 142;
 
         assert_eq!(part1(INPUT), OUTPUT);
     }
@@ -71,7 +71,7 @@ mod tests {
     #[test]
     fn part2_example() {
         const INPUT: &str = "two1nine\neightwothree\nabcone2threexyz\nxtwone3four\n4nineeightseven2\nzoneight234\n7pqrstsixteen";
-        const OUTPUT: u32 = 281;
+        const OUTPUT: usize = 281;
 
         assert_eq!(part2(INPUT), OUTPUT);
     }
