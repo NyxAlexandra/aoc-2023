@@ -24,15 +24,15 @@ fn part_1(input: &str) -> usize {
 
 fn part_2(input: &str) -> usize {
     let regexes = [
-        Regex::new(r"1|one"),
-        Regex::new(r"2|two"),
-        Regex::new(r"3|three"),
-        Regex::new(r"4|four"),
-        Regex::new(r"5|five"),
-        Regex::new(r"6|six"),
-        Regex::new(r"7|seven"),
-        Regex::new(r"8|eight"),
-        Regex::new(r"9|nine"),
+        Regex::new("1|one"),
+        Regex::new("2|two"),
+        Regex::new("3|three"),
+        Regex::new("4|four"),
+        Regex::new("5|five"),
+        Regex::new("6|six"),
+        Regex::new("7|seven"),
+        Regex::new("8|eight"),
+        Regex::new("9|nine"),
     ]
     .map(Result::unwrap);
 
