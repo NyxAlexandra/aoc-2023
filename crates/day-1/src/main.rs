@@ -48,10 +48,10 @@ fn part2(input: &str) -> u32 {
                 .map(|(num, _)| num)
                 .collect();
 
-            let first = matches.first()?;
-            let last = matches.last()?;
+            let first = *matches.first()? as u32;
+            let last = *matches.last()? as u32;
 
-            format!("{}{}", first, last).parse::<u32>().ok()
+            Some((first * 10) + last)
         })
         .sum()
 }
